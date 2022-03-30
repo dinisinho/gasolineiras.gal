@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+{% block title %}Prezos das gasolineiras {% if concello %} en {{ concello }} {% else %} galegas {% endif %}{% endblock %}
+{% block content %}
+<div class="container">
+<div class="col-lg-8 mx-auto p-3 py-md-5"></div>
+<main>
+    <h1>Que é gasolineiras.gal?</h1>
+    <p class="fs-5 col-md-8">gasolineiras.gal é unha web que che permite saber, por concellos, os prezos dos combustíbeis nas diferentes gasolineiras da Galiza. Como ves é unha aplicación moi simple e, polo tanto, con moita marxe de mellora.</p>
+
+    <hr class="col-3 col-md-2 mb-5">
+
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h2>De onde saen os datos?</h2>
+        <p>Os datos que amosa esta web son obtidos da API Rest que ofrece o Ministerio para a Transición Ecolóxica e o Reto Demográfico.</p>
+        <ul class="icon-list">
+          <li><a href="https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help" rel="noopener" target="_blank">Ligazón á axuda do servizo REST</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Código</h2>
+        <p>O código desta web está publicado en GitHub. Está feita co framework para python <a href="https://github.com/pallets/flask/">Flask</a>. Calquera persoa que queira colaborar é benvida!</p>
+        <ul class="icon-list">
+          <li><a href="https://github.com/dinisinho/gasolineiras.gal">Repositorio de GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href='{{ url_for("static", filename="imaxes/gasolineira3.png") }}'/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="Consulta o prezo dos combustíbeis nas gasolineiras galegas" />
+    <meta name="keywords" content="gasolineira, gasolineiras, prezo, prezos, precio, precios, galiza, galicia, combustíbel, combustíbeis, combustible, combustibles"/>
+
+    <meta property="og:title" content="Prezo dos combustíbeis nas gasolineiras galegas" />
+    <meta property="og:url" content="https://www.gasolineiras.gal/" />
+    <meta property="og:description" content="Consulta o prezo dos combustíbeis nas gasolineiras galegas">
+    <meta property="og:image" content='{{ url_for("static", filename="imaxes/gasolineira2.png") }}'>
+    <meta property="og:locale:alternate" content="gl_ES" />
+
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href='{{ url_for("static", filename="bootstrap/css/bootstrap.min.css") }}' />
+    <script src="{{ url_for("static", filename="bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white rounded" aria-label="Twelfth navbar example">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img class="img-fluid" src='{{ url_for("static", filename="imaxes/gasolineira3.png") }}' /> gasolineiras.gal</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+            <ul class="navbar-nav">
+               <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/sobre/">Sobre</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+{% block buscador %}{% endblock %}
+{% block content %}{% endblock %}
+<div class="container">
+    <footer class="py-3 my-4">
+      <p class="text-center text-muted">Manter esta web ten algún que outro gasto. Se queres e podes, axúdanos a sufragalos:</p>
+      <div class="d-flex justify-content-center" id="donate-button-container">
+
+        <div id="donate-button"></div>
+        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+        <script>
+        PayPal.Donation.Button({
+        env:'production',
+        hosted_button_id:'RL3C39CGS6QQG',
+        image: {
+        src:'https://www.paypalobjects.com/pt_PT/PT/i/btn/btn_donate_SM.gif',
+        alt:'Faça donativos com o botão PayPal',
+        title:'PayPal - The safer, easier way to pay online!',
+        }
+        }).render('#donate-button');
+        </script>
+        </div>
+    </footer>
+  </div>
+</body>
+</html>
