@@ -20,7 +20,10 @@ def galeguiza(cadea):
         ("^CAMINO$", "CAMIÑO"),
         ("^AÉROPUERTO$", "AEROPORTO"),
         ("^AEROPUERTO$", "AEROPORTO"),
-        ("^BAJO$", "BAIXO")
+        ("^BAJO$", "BAIXO"),
+        ("FINISTERRE", "FISTERRA"),
+        ("^Y$", "E"),
+        ("Y", "I")
     )
 
     lista = cadea.split()
