@@ -13,7 +13,7 @@ t_ordepor = [
     ('p_gasoleo_a', 'Gasóleo A'),
     ('p_gasoleo_p', 'Gasóleo Premium'),
     ('p_gasoleo_b', 'Gasóleo B'),
-    ('p_gasolina_95', 'Gaolina 95'),
+    ('p_gasolina_95', 'Gasolina 95'),
     ('p_gasolina_98', 'Gasolina 98')
 ]
 
