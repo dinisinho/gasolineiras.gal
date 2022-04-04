@@ -1,7 +1,7 @@
 {% extends "base_template.html" %}
-{% block title %}Prezos das gasolineiras {% if concello %} en {{ concello }} {% else %} galegas {% endif %}{% endblock %}
+{% block title %}Prezos das gasolineiras {% if concellos %} en {{ concellos }} {% else %} galegas {% endif %}{% endblock %}
 {% block buscador %}
-{% if not concello %}
+{% if not concellos %}
 <div class="d-flex justify-content-center">
   <img class="img-fluid" src='{{ url_for("static", filename="imaxes/gasolineira2.png") }}' />
 </div>
@@ -15,8 +15,8 @@
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div class="mx-auto mb-3">
-                <p class="form-text">Selecciona o concello:</p>
-                {{ form.concello(class="form-select") }}
+                <p class="form-text">Selecciona o(s) concello(s):</p>
+                  {{ form.concello(id="concello", class="form-control",  multiple="multiple", style="display: none;") }}
                 {% for error in form.concello.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
@@ -29,16 +29,25 @@
                   {{ form.submit(class="btn btn-primary") }}
             </div>
     </form>
+    <script>
+      $(function(){
+    
+        $("#concello").bsMultiSelect({
+          useChoicesDynamicStyling: true,
+          });
+  
+      });
+      </script>
     </div>
   </div>
 {% endblock %}
 {% block content %}
 <div class="container-fluid">
-{% if concello %}
+{% if concellos %}
 {% if ordepor.cod  == "nada" %}
-<p class="h3 text-center">Gasolineiras en {{ concello }}</p>
+<p class="h3 text-center">Gasolineiras en {{ concellos }}</p>
 {% else %}
-<p class="h3 text-center">Gasolineiras en {{ concello }} ordenado polo prezo de {{ ordepor.nome }}</p>
+<p class="h3 text-center">Gasolineiras en {{ concellos }} ordenado polo prezo de {{ ordepor.nome }}</p>
 {% endif %}
 {% endif %}
 {% for gasolineira in gasolineiras %}
@@ -57,7 +66,7 @@
             <div class="card-body">
               <h5 class="card-title text-success">{{ gasolineira.nome }}</h5>
               <p class="card-text text-success">{{ gasolineira.enderezo }}</p>
-              <p class="card-text text-success"><small>{{ gasolineira.localidade }}</small></p>
+              <p class="card-text text-success"><small>{{ gasolineira.localidade }} - {{ gasolineira.concello }}</small></p>
               <a href="{{gasolineira.maps}}" target="_blank" class="card-link text-success"><img src="{{ url_for("static", filename="imaxes/geo-alt-fill.svg") }}" alt="Bootstrap" width="32" height="32">Mapa</a>
             </div>
             </div>
@@ -81,7 +90,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ gasolineira.nome }}</h5>
               <p class="card-text">{{ gasolineira.enderezo }}</p>
-              <p class="card-text"><small>{{ gasolineira.localidade }}</small></p>
+              <p class="card-text"><small>{{ gasolineira.localidade }} - {{ gasolineira.concello }}</small></p>
               <a href="{{gasolineira.maps}}" target="_blank" class="card-link"><img src="{{ url_for("static", filename="imaxes/geo-alt-fill.svg") }}" alt="Bootstrap" width="32" height="32">Mapa</a>
             </div>
             </div>

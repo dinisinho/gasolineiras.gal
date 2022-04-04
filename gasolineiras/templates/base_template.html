@@ -16,10 +16,15 @@
     <!-- Latest compiled and minified CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href='{{ url_for("static", filename="bootstrap/css/bootstrap.min.css") }}' />
+
+    <script src="{{ url_for("static", filename="jquery/jquery-3.6.0.slim.min.js") }}"></script>
     <script src="{{ url_for("static", filename="bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+
 
 </head>
 <body>
+  <script src="{{ url_for("static", filename="popper/popper.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="bsmultiselect/BsMultiSelect.min.js") }}"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-white rounded" aria-label="Twelfth navbar example">
         <div class="container-fluid">
           <a class="navbar-brand" href="/"><img class="img-fluid" src='{{ url_for("static", filename="imaxes/gasolineira3.png") }}' /> gasolineiras.gal</a>

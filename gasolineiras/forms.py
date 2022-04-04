@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, SelectField,SubmitField
+from wtforms import Form, SelectField,SubmitField, SelectMultipleField
 from functions import listaConcelhos
 from wtforms.validators import DataRequired	
 
@@ -18,6 +18,6 @@ t_ordepor = [
 ]
 
 class formBusqueda(FlaskForm):
-    concello = SelectField('Concello', choices=lista_concellos, default='', validators=[DataRequired("Escolle un concello")])
+    concello = SelectMultipleField('Concello', choices=lista_concellos, validators=[DataRequired("Escolle un concello polo menos")])
     ordepor = SelectField('Ordenar prezo por', choices=t_ordepor)
     submit = SubmitField('Buscar')
