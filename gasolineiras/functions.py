@@ -71,6 +71,7 @@ def datosConcelho(idConcellos, ordepor):
             p_gasoleo_b = datos_gasolineira['Precio Gasoleo B'].replace(',','.')
             p_gasolina_95 = datos_gasolineira['Precio Gasolina 95 E5'].replace(',','.')
             p_gasolina_98 = datos_gasolineira['Precio Gasolina 98 E5'].replace(',','.')
+            tipo_venda = datos_gasolineira['Tipo Venta']
 
             gasolineira = {
                 'nome' : nome,
@@ -87,11 +88,12 @@ def datosConcelho(idConcellos, ordepor):
                 'p_gasolina_98' : p_gasolina_98,
             }
 
-            if ordepor != "nada":
-                if gasolineira[ordepor] != '':
+            if tipo_venda.upper() == 'P':
+                if ordepor != "nada":
+                    if gasolineira[ordepor] != '':
+                        lista.append(gasolineira)
+                else:
                     lista.append(gasolineira)
-            else:
-                lista.append(gasolineira)
     
     if ordepor == "nada":
         return lista
