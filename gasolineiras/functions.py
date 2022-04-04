@@ -15,6 +15,7 @@ def galeguiza(cadea):
         ("^\(EL\)$", "(O)" ),
         ("^EL$", "O"),
         ("^LOS$", "OS"),
+        ("^DEL$", "DO"),
         ("^CR$", "ESTRADA"),
         ("^CARRETERA$", "ESTRADA"),
         ("^CAMINO$", "CAMIÑO"),
