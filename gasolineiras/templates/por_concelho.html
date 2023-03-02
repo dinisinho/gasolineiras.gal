@@ -44,6 +44,14 @@
 {% block content %}
 <div class="container-fluid">
 {% if concellos %}
+{% if aviso_doazon %}
+<div class="alert alert-danger" role="alert">
+  {{texto_doazon}}
+  <div class="d-flex justify-content-center" id="donate-button-container">
+    <div id="donate-button"></div>
+  </div>
+</div>
+{% endif %}
 {% if ordepor.cod  == "nada" %}
 <p class="h3 text-center">Gasolineiras en {{ concellos }}</p>
 {% else %}

@@ -48,12 +48,14 @@
       </nav>
 {% block buscador %}{% endblock %}
 {% block content %}{% endblock %}
+{% if not aviso_doazon %}
 <div class="container">
     <footer class="py-3 my-4">
       <p class="text-center text-muted">Manter esta web ten algún que outro gasto. Se queres e podes, axúdanos a sufragalos:</p>
       <div class="d-flex justify-content-center" id="donate-button-container">
 
         <div id="donate-button"></div>
+        {% endif %}
         <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
         <script>
         PayPal.Donation.Button({

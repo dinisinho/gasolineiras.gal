@@ -9,8 +9,29 @@ from wtforms.validators import DataRequired
 
 from waitress import serve
 
+from os import getenv
+
+try:
+    aviso_doazon = (getenv('AVISO_DOAZON') == 'true')
+    if aviso_doazon:
+        try:
+            texto_doazon = (getenv('TEXTO_DOAZON'))
+            if not texto_doazon:
+                texto_doazon = "Manter esta web ten algún que outro gasto. Se queres e podes, axúdanos a sufragalos:"
+        except:
+            pass
+    else:
+        texto_doazon = False
+except:
+    pass
+
+try:
+    secret_key = getenv("SECRET_KEY")
+except:
+    pass
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'asdfawefñqjwefASDFqwefjf21'
+app.config['SECRET_KEY'] = secret_key
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -38,7 +59,7 @@ def index():
         for a in t_ordepor:
             if ordepor == a[0]:
                 d_ordepor = {'cod' : a[0], 'nome' : a[1]}
-        return render_template('por_concelho.html', concellos = l_concellos_str, gasolineiras = lista_gasolineiras, ordepor = d_ordepor, form=form)
+        return render_template('por_concelho.html', concellos = l_concellos_str, gasolineiras = lista_gasolineiras, ordepor = d_ordepor, form=form, aviso_doazon=aviso_doazon, texto_doazon=texto_doazon)
     else:
         return render_template('por_concelho.html', form=form)
 
@@ -47,5 +68,7 @@ def sobre():
     return render_template('sobre.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.0.45") #Só para debug en DEV
-    #serve(app)
+    if getenv('DEBUG') == 'true':
+        app.run(debug=True, host="0.0.0.0")
+    else:
+        serve(app)
